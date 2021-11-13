@@ -1,26 +1,55 @@
 import string
-print("Type 'encode' for encryption, 'decode' for descryption : ")
-task = input()
+task = input("Type 'encode' for encryption, 'decode' for descryption : ")
 
 lower_alphabets = list(string.ascii_lowercase)
 
 message = input("Type your message: ")
 message = message.lower()
-message = list(message)
-print("Type the shift number : ")
-shift = int(input())
+message = tuple(message)
+shift = int(input("Type the shift number : "))
+
+# Encryption Function
+def encryption(message):
+
+    encrypeted_result = list(message)
+
+    for item in message:
+        if(item in lower_alphabets):
+            index = lower_alphabets.index(item)
+            message_index = message.index(item)
+            encode_index = index + shift
+            if(encode_index <= 25):
+                encrypeted_result[message_index] = lower_alphabets[encode_index]
+            else:
+                encode_index = index + shift - 25
+                encrypeted_result[message_index] = lower_alphabets[encode_index]
+
+    for encryption in encrypeted_result:
+        print(encryption, end="")
+
+# Decryption Function
+def decryption(message):
+    decrypted_list = list(message)
+
+    for item in message:
+        if(item in lower_alphabets):
+            index = lower_alphabets.index(item)
+            message_index = message.index(item)
+            decode_index = index - shift
+            if(decode_index >= 0):
+                decrypted_list[message_index] = lower_alphabets[decode_index]
+            else:
+                decode_index = index - shift + 25
+                decrypted_list[message_index] = lower_alphabets[decode_index]
+
+    for decryption in decrypted_list:
+        print(decryption, end="")
+
 
 if(task == "encode"):
 
-    encrypeted_result = []
+    encryption(message)
 
-    for item in message:
-        index = lower_alphabets.index(item)
-        encode_index = index + shift
-        if(encode_index <= 26):
-            encrypeted_result.append(lower_alphabets[encode_index])
-        else:
-            encode_index = index + shift - 27
-            encrypeted_result.append(lower_alphabets[encode_index])
+elif(task == "decode"):
 
-print(encrypeted_result)
+    decryption(message)

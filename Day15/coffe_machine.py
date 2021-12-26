@@ -34,6 +34,7 @@ resources = {
 
 
 def display_report():
+    """Displays the Report of Remaining Resources"""
     print("Water : ", resources["water"])
     print("Milk : ", resources["milk"])
     print("Coffee : ", resources["coffee"])
@@ -41,15 +42,16 @@ def display_report():
 
 
 def check_resource(user_choice):
-    # Check For Resources Individually
+    """Check For Resources Individually"""
 
-    if(resources["water"] >= MENU[user_choice]["ingredients"]["water"]):
+    # Should have used for loop here, had a feeling I was missing something!
+    if(resources["water"] <= MENU[user_choice]["ingredients"]["water"]):
         return "Sorry there is not enough water"
 
-    elif(resources["milk"] >= MENU[user_choice]["ingredients"]["milk"]):
+    elif(resources["milk"] <= MENU[user_choice]["ingredients"]["milk"]):
         return "Sorry there is not enough milk"
 
-    elif(resources["coffee"] >= MENU[user_choice]["ingredients"]["coffee"]):
+    elif(resources["coffee"] <= MENU[user_choice]["ingredients"]["coffee"]):
         return "Sorry there is not enough coffee"
         
     else:
@@ -57,7 +59,7 @@ def check_resource(user_choice):
 
 
 def check_money(user_choice, money):
-    if(MENU[user_choice]["cost"] >= money):
+    if(money >= MENU[user_choice]["cost"]):
         return True
     else:
         return False
@@ -98,6 +100,7 @@ def make_coffee(user_choice):
 user_choice = input("What would you like? (espresso/latte/cappuccino): ")
 
 while(user_choice != "off"):
+
     if(user_choice == "report"):
         display_report()
     else:

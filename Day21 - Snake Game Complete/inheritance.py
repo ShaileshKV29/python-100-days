@@ -11,7 +11,7 @@ class Derived(Base):
 
     def derived_method(self):
         print("Inside Derived Class")
-        super().base_method()
+        self.base_method()
 
 derived = Derived()
 derived.base_method()

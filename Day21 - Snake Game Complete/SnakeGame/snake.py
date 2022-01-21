@@ -49,9 +49,3 @@ class Snake:
     def right(self):
         if(self.head.heading() != 180):
             self.head.setheading(0)
-
-    def xcor(self):
-        return self.segments[0].xcor()
-
-    def ycor(self):
-        return self.segments[0].ycor()

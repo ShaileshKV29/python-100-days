@@ -37,10 +37,10 @@ while game_is_on:
         snake.extend()
         score.add_score()
     
-    if snake.head.xcor() < -500 or snake.head.xcor() > 420:
+    if snake.head.xcor() < -500 or snake.head.xcor() > 480:
         game_is_on = False
 
-    if snake.ycor() < -280 or snake.ycor() > 280:
+    if snake.head.ycor() < -280 or snake.head.ycor() > 260:
         game_is_on = False
 
     for segment in snake.segments[1:]:

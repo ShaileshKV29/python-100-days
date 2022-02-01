@@ -14,9 +14,12 @@ names_file = open('Day24 - File Handling/Mail Merge Project/Input/Names/invited_
 names = names_file.readlines()
 for name in names:
     output_file = open(f'Day24 - File Handling/Mail Merge Project/Output/ReadyToSend/send-to-{name[:-1]}.txt', "w")
-    print(name[:-1])
+    # print(name[:-1])
+    new_message = old_letter.replace("[name]", f"{name[:-1]}")
+    output_file.write(new_message)
 
 
+output_file.close()
 starting_letter.close()
 names_file.close()
 
